@@ -1,0 +1,82 @@
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: #212529;
+  color: white;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  margin-bottom: 15px;
+}
+
+.navbar-brand i {
+  font-size: 14px;
+  color: gray;
+  margin-top: -2px;
+  display: block;
+}
+
+.btn.disabled,
+.btn:disabled {
+  opacity: 0.45;
+}
+
+form {
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.navbar-nav a {
+  margin-left: 15px;
+  border-radius: 3px;
+  padding: 15px;
+  color: white;
+}
+
+.navbar-nav a:hover {
+  text-decoration: none;
+  color: #dce8ee;
+}
+
+.nav-link-active {
+  background: #7e9fb0;
+  color: white;
+}
+
+.card-img-top {
+  margin: 0 auto;
+  width: 240px;
+}
+
+.card {
+  margin-top: 20px;
+  background: #323741;
+  border-radius: 8px;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.centered.card {
+  text-align: center;
+}
+
+a.btn {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.alert-warning {
+  background: transparent;
+  color: white;
+  border-color: gray;
+}

@@ -1,0 +1,8 @@
+{
+  "short_name": "Banking Application with React - MIT Lab",
+  "name": "Banking Application with React - MIT Lab - Renzo Dupont",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
