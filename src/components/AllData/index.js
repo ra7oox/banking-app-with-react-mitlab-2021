@@ -3,6 +3,7 @@ import { Table, Card } from "react-bootstrap";
 import Logo from "../../img/logo.png";
 
 import TopMenu from "../TopMenu/index";
+import Footer from "../Footer/index";
 import { UserContext } from "../../App";
 
 const AllData = () => {
@@ -13,12 +14,13 @@ const AllData = () => {
       <TopMenu />
       <Card className="centered">
         <Card.Img variant="top" src={Logo} />
-        <Card.Body>
+        <Card.Body className="table-container">
           <Table striped bordered hover variant="dark">
             <thead>
               <tr>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Password</th>
                 <th>Balance</th>
               </tr>
             </thead>
@@ -28,7 +30,8 @@ const AllData = () => {
                   <tr>
                     <td>{item.name}</td>
                     <td>{item.email}</td>
-                    <td>$ {item.balance}</td>
+                    <td>{item.password}</td>
+                    <td>{item.balance}</td>
                   </tr>
                 );
               })}
@@ -36,6 +39,7 @@ const AllData = () => {
           </Table>
         </Card.Body>
       </Card>
+      <Footer />
     </>
   );
 };

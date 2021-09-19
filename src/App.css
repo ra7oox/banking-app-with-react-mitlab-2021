@@ -3,8 +3,26 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
-  background: #212529;
-  color: white;
+  color: #f3f3f3;
+  background-color: #212529;
+  font-family: "Poppins", sans-serif;
+}
+
+.background {
+  background-image: url(background.jpg);
+  background-size: cover;
+  opacity: 0.04;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#root {
+  z-index: 2;
+  position: relative;
 }
 
 .container-fluid {
@@ -14,6 +32,7 @@ body {
 
 .navbar {
   margin-bottom: 15px;
+  border-bottom: 1px solid #5d7c8d;
 }
 
 .navbar-brand i {
@@ -28,6 +47,13 @@ body {
   opacity: 0.45;
 }
 
+.logout {
+  margin: 0 auto;
+  margin-top: 20px !important;
+  display: block;
+  color: #f3f3f3 !important;
+}
+
 form {
   padding: 20px;
   width: 80%;
@@ -39,17 +65,17 @@ form {
   margin-left: 15px;
   border-radius: 3px;
   padding: 15px;
-  color: white;
+  color: #f3f3f3;
 }
 
 .navbar-nav a:hover {
   text-decoration: none;
-  color: #dce8ee;
+  background-color: #506272;
 }
 
 .nav-link-active {
-  background: #7e9fb0;
-  color: white;
+  border: 1px solid #5d7c8d;
+  color: #f3f3f3;
 }
 
 .card-img-top {
@@ -59,24 +85,87 @@ form {
 
 .card {
   margin-top: 20px;
-  background: #323741;
-  border-radius: 8px;
+  background: #343a40;
+  border-radius: 4px;
   padding: 40px;
   max-width: 800px;
   margin: 0 auto;
+  border: 1px solid #5d7c8d;
 }
 
-.centered.card {
+.card-title {
+  margin-bottom: 0;
+}
+
+.centered.card,
+.centered {
   text-align: center;
 }
 
-a.btn {
+.bottom-margin {
+  margin-bottom: 20px;
+}
+
+a.btn,
+.btn {
   width: 200px;
   margin: 0 auto;
+  border: 1px solid #5d7c8d !important;
 }
 
 .alert-warning {
   background: transparent;
-  color: white;
-  border-color: gray;
+  color: #f3f3f3;
+  border-color: #5d7c8d;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+.table-container {
+  background: transparent;
+  border-radius: 2px;
+  border: 1px solid #5d7c8d;
+  color: #f3f3f3;
+}
+
+i {
+  font-size: 14px;
+  color: gray;
+}
+
+.error {
+  border: 2px solid #904d3c !important;
+}
+
+.error::placeholder {
+  color: #904d3c;
+}
+
+.table-dark th,
+.table-dark td {
+  border: 0 !important;
+}
+
+.table-dark th {
+  border-bottom: 1px solid #5d7c8d !important;
+  background-color: #212529 !important;
+}
+
+table {
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0.9;
+}
+
+.table-container {
+  padding: 5px;
+  margin-top: 25px;
+}
+
+@media (max-width: 800px) {
+  .card {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
 }
