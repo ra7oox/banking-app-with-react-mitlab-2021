@@ -72,7 +72,7 @@ const Withdraw = () => {
               <Alert variant="warning">
                 <Form>
                   <Form.Group className="mb-3">
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Withdraw Amount:</Form.Label>
                     <Form.Control
                       id="amount"
                       type="text"

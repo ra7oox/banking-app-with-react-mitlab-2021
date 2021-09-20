@@ -67,53 +67,59 @@ const CreateAccount = () => {
         <Card.Body>
           <Card.Title className="centered">Create a new account</Card.Title>
           <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                id="name"
-                type="text"
-                placeholder="Enter name"
-                value={name}
-                onBlur={(e) =>
-                  validateInput(e.target, "Please enter a value to continue")
-                }
-                onInput={(e) => setName(e.target.value)}
-              />
-            </Form.Group>
+            {!submitted && (
+              <Form.Group className="mb-3">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  id="name"
+                  type="text"
+                  placeholder="Enter name"
+                  value={name}
+                  onBlur={(e) =>
+                    validateInput(e.target, "Please enter a value to continue")
+                  }
+                  onInput={(e) => setName(e.target.value)}
+                />
+              </Form.Group>
+            )}
 
-            <Form.Group className="mb-3">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                id="email"
-                type="email"
-                placeholder="Enter email"
-                value={email}
-                onBlur={(e) =>
-                  validateInput(e.target, "Please enter a value to continue")
-                }
-                onInput={(e) => setEmail(e.target.value)}
-              />
-            </Form.Group>
+            {!submitted && (
+              <Form.Group className="mb-3">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  id="email"
+                  type="email"
+                  placeholder="Enter email"
+                  value={email}
+                  onBlur={(e) =>
+                    validateInput(e.target, "Please enter a value to continue")
+                  }
+                  onInput={(e) => setEmail(e.target.value)}
+                />
+              </Form.Group>
+            )}
 
-            <Form.Group className="mb-3">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                id="password"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onBlur={(e) =>
-                  validateInput(
-                    e.target,
-                    "You need to enter a password with more than 8 characters"
-                  )
-                }
-                onInput={(e) => setPassword(e.target.value)}
-              />
-              {password.length < 8 && (
-                <i>* Password must have more than 8 characters</i>
-              )}
-            </Form.Group>
+            {!submitted && (
+              <Form.Group className="mb-3">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onBlur={(e) =>
+                    validateInput(
+                      e.target,
+                      "You need to enter a password with more than 8 characters"
+                    )
+                  }
+                  onInput={(e) => setPassword(e.target.value)}
+                />
+                {password.length < 8 && (
+                  <i>* Password must have more than 8 characters</i>
+                )}
+              </Form.Group>
+            )}
 
             {error !== "" && <Alert variant="danger">{error}</Alert>}
             {!submitted && (

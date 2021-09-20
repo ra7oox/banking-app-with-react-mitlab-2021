@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { UserContext } from "../../App";
 
-const Footer = ({ logout }) => {
+const Footer = () => {
   const context = useContext(UserContext);
 
   return (

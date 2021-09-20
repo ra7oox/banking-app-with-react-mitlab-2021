@@ -11,13 +11,15 @@ const TopMenu = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">
-          Awesome Bank <br />
-          <i>
-            {context.loggedInUser !== null
-              ? `Logged in as ${context.loggedInUser.name}`
-              : "You are not logged in"}
-          </i>
+        <Navbar.Brand>
+          <NavLink to="/" exact>
+            Awesome Bank <br />
+            <i>
+              {context.loggedInUser !== null
+                ? `Logged in as ${context.loggedInUser.name}`
+                : "You are not logged in"}
+            </i>
+          </NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
