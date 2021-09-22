@@ -8,6 +8,21 @@ import { UserContext } from "../../App";
 
 const AllData = () => {
   const context = useContext(UserContext);
+  // Add all users transactions in a single array ordered by date
+  const transactions = [];
+  for (let user of context.users) {
+    for (let transaction of user.transactions) {
+      transactions.push({
+        account: user.name,
+        operation: transaction.operation,
+        amount: transaction.amount,
+        createdDate: transaction.createdDate,
+      });
+    }
+  }
+  transactions.sort(
+    (a, b) => new Date(b.createdDate) - new Date(a.createdDate)
+  );
 
   return (
     <>
@@ -15,6 +30,7 @@ const AllData = () => {
       <Card className="centered">
         <Card.Img variant="top" src={Logo} />
         <Card.Body className="table-container">
+          <h3>Accounts</h3>
           <Table striped bordered hover variant="dark">
             <thead>
               <tr>
@@ -22,6 +38,7 @@ const AllData = () => {
                 <th>Email</th>
                 <th>Password</th>
                 <th>Balance</th>
+                <th>Created Date</th>
               </tr>
             </thead>
             <tbody>
@@ -32,6 +49,30 @@ const AllData = () => {
                     <td>{item.email}</td>
                     <td>{item.password}</td>
                     <td>{item.balance}</td>
+                    <td>{item.createdDate.toLocaleString()}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+          <h3>Transactions</h3>
+          <Table striped bordered hover variant="dark">
+            <thead>
+              <tr>
+                <th>Account</th>
+                <th>Operation</th>
+                <th>Amount</th>
+                <th>Created Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {transactions.map((item) => {
+                return (
+                  <tr>
+                    <td>{item.account}</td>
+                    <td>{item.operation}</td>
+                    <td>{item.amount}</td>
+                    <td>{item.createdDate.toLocaleString()}</td>
                   </tr>
                 );
               })}

@@ -28,6 +28,11 @@ const Deposit = () => {
 
   const submit = () => {
     context.loggedInUser.balance += +amount;
+    context.loggedInUser.transactions.push({
+      operation: "Deposit",
+      amount: amount,
+      createdDate: new Date(),
+    });
     setError("");
     setAmount(0);
     setSubmitted(true);

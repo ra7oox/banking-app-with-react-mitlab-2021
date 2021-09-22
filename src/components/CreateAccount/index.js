@@ -46,6 +46,7 @@ const CreateAccount = () => {
       password: password,
       createdDate: new Date(),
       balance: 0,
+      transactions: [],
     });
     setError("");
     setSubmitted(true);

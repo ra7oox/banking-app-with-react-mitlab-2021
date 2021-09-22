@@ -32,6 +32,11 @@ const Withdraw = () => {
       return false;
     }
     context.loggedInUser.balance -= +amount;
+    context.loggedInUser.transactions.push({
+      operation: "Withdraw",
+      amount: amount,
+      createdDate: new Date(),
+    });
     setError("");
     setAmount(0);
     setSubmitted(true);

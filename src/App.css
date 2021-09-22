@@ -140,6 +140,17 @@ input[type="email"],
   color: #f3f3f3;
 }
 
+.table-container {
+  overflow-x: auto;
+}
+
+.table-container h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid gray;
+  font-size: 24px;
+}
+
 i {
   font-size: 14px;
   color: gray;
