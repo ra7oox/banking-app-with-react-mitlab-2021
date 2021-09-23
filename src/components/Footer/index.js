@@ -11,7 +11,7 @@ const Footer = () => {
       {context.loggedInUser !== null && (
         <Link
           className="btn logout"
-          exact
+          exact="true"
           to="/"
           onClick={() => {
             context.loggedInUser = null;

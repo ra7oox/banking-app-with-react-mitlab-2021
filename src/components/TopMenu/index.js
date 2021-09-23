@@ -16,8 +16,8 @@ const TopMenu = () => {
             Awesome Bank <br />
             <i>
               {context.loggedInUser !== null
-                ? `Logged in as ${context.loggedInUser.name}`
-                : "You are not logged in"}
+                ? `Hey, ${context.loggedInUser.name}`
+                : "Thank you for choosing us"}
             </i>
           </NavLink>
         </Navbar.Brand>

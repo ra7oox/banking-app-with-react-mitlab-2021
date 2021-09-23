@@ -1,5 +1,6 @@
 html,
-body {
+body,
+#root {
   height: 100%;
   padding: 0;
   margin: 0;
@@ -17,7 +18,25 @@ body {
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: -500;
+}
+
+.copyright {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #808080;
+  padding: 20px;
+  background-color: #343a40;
+  text-align: center;
+  color: #b1b1b1;
+}
+
+/*This CSS rule helps with container scrolling in small screens */
+.copyright-spacing {
+  width: 100%;
+  height: 100px;
 }
 
 #root {
@@ -32,7 +51,11 @@ body {
 
 .navbar {
   margin-bottom: 15px;
-  border-bottom: 1px solid #5d7c8d;
+  border-bottom: 1px solid #808080;
+}
+
+.navbar-brand {
+  text-align: center;
 }
 
 .navbar-brand i {
@@ -61,19 +84,27 @@ form {
   margin: 0 auto;
 }
 
+a,
 .navbar-nav a,
 .navbar-brand a {
   margin-left: 15px;
   border-radius: 3px;
   padding: 15px;
   color: #f3f3f3;
-  transition: 0.3s;
+  transition: 1s;
 }
 
+a:hover {
+  text-decoration: none;
+  color: #5d7c8d;
+}
+
+a,
 .navbar-brand a {
   margin-left: 0;
   padding: 0;
 }
+
 .navbar-brand a:hover {
   text-decoration: none;
 }
@@ -94,13 +125,13 @@ form {
 }
 
 .card {
-  margin-top: 20px;
   background: #343a40;
   border-radius: 4px;
   padding: 40px;
   max-width: 800px;
   margin: 0 auto;
-  border: 1px solid #5d7c8d;
+  margin-top: 30px;
+  border: 1px solid #808080;
 }
 
 .card-title {
@@ -124,10 +155,28 @@ a.btn,
   transition: 0.3s;
 }
 
+.alert {
+  border-radius: 2px;
+}
+
 .alert-warning {
   background: transparent;
-  color: #f3f3f3;
-  border-color: #5d7c8d;
+  color: #f1f1f1;
+  border: 1px solid #808080;
+}
+
+.alert-danger {
+  background: transparent;
+  color: #f4bbc4;
+  border: 1px solid #e28593;
+  text-align: center;
+  border-color: #e28593 !important;
+}
+
+.alert-success {
+  background: transparent;
+  color: #93ba94;
+  border: 1px solid #93ba94;
 }
 
 input[type="text"],
@@ -136,8 +185,12 @@ input[type="email"],
 .table-container {
   background: transparent;
   border-radius: 2px;
-  border: 1px solid #5d7c8d;
-  color: #f3f3f3;
+  border: 1px solid #808080;
+  color: white;
+}
+
+.borderless {
+  border: 0;
 }
 
 .table-container {
@@ -149,6 +202,7 @@ input[type="email"],
   margin-bottom: 20px;
   border-bottom: 1px solid gray;
   font-size: 24px;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 i {
@@ -157,11 +211,11 @@ i {
 }
 
 .error {
-  border: 2px solid #904d3c !important;
+  border: 2px solid #f4bbc4 !important;
 }
 
 .error::placeholder {
-  color: #904d3c;
+  color: #f4bbc4;
 }
 
 .table-dark th,

@@ -16,13 +16,27 @@ const App = () => {
   return (
     <React.StrictMode>
       <UserContext.Provider value={{ users: [], loggedInUser: null }}>
-        <Container fluid>
-          <Route path="/" exact component={Home} />
-          <Route path="/create-account" exact component={CreateAccount} />
-          <Route path="/deposit" exact component={Deposit} />
-          <Route path="/withdraw" exact component={Withdraw} />
-          <Route path="/all-data" exact component={AllData} />
-        </Container>
+        <>
+          <div className="background"></div>
+          <Container fluid>
+            <Route path="/" exact component={Home} />
+            <Route path="/create-account" exact component={CreateAccount} />
+            <Route path="/deposit" exact component={Deposit} />
+            <Route path="/withdraw" exact component={Withdraw} />
+            <Route path="/all-data" exact component={AllData} />
+            <div className="copyright-spacing"></div>
+          </Container>
+          <div className="copyright">
+            Designed by{" "}
+            <a
+              href="https://renzodupont.github.io/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Renzo Dupont
+            </a>
+          </div>
+        </>
       </UserContext.Provider>
     </React.StrictMode>
   );

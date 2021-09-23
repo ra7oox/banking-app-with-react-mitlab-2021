@@ -74,10 +74,10 @@ const CreateAccount = () => {
                 <Form.Control
                   id="name"
                   type="text"
-                  placeholder="Enter name"
+                  placeholder="Name"
                   value={name}
                   onBlur={(e) =>
-                    validateInput(e.target, "Please enter a value to continue")
+                    validateInput(e.target, "Name cannot be empty")
                   }
                   onInput={(e) => setName(e.target.value)}
                 />
@@ -90,10 +90,10 @@ const CreateAccount = () => {
                 <Form.Control
                   id="email"
                   type="email"
-                  placeholder="Enter email"
+                  placeholder="Email"
                   value={email}
                   onBlur={(e) =>
-                    validateInput(e.target, "Please enter a value to continue")
+                    validateInput(e.target, "Email cannot be empty")
                   }
                   onInput={(e) => setEmail(e.target.value)}
                 />
@@ -111,7 +111,7 @@ const CreateAccount = () => {
                   onBlur={(e) =>
                     validateInput(
                       e.target,
-                      "You need to enter a password with more than 8 characters"
+                      "Password needs to have at least 8 characters"
                     )
                   }
                   onInput={(e) => setPassword(e.target.value)}

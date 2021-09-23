@@ -17,10 +17,10 @@ const Home = () => {
     return email.trim() !== "" && password.trim() !== "";
   };
 
-  const validateInput = (input) => {
+  const validateInput = (input, errorMessage) => {
     if (input.value === "") {
       input.classList.add("error");
-      input.placeholder = "Please enter a value to continue";
+      input.placeholder = errorMessage;
     } else {
       input.classList.remove("error");
     }
@@ -55,13 +55,15 @@ const Home = () => {
           {context.loggedInUser === null && (
             <Form>
               <Form.Group className="mb-3">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>Email</Form.Label>
                 <Form.Control
                   id="email"
                   type="email"
-                  placeholder="Enter email"
+                  placeholder="Email"
                   value={email}
-                  onBlur={(e) => validateInput(e.target)}
+                  onBlur={(e) =>
+                    validateInput(e.target, "Email cannot be empty")
+                  }
                   onInput={(e) => setEmail(e.target.value)}
                 />
               </Form.Group>
@@ -73,7 +75,9 @@ const Home = () => {
                   type="password"
                   placeholder="Password"
                   value={password}
-                  onBlur={(e) => validateInput(e.target)}
+                  onBlur={(e) =>
+                    validateInput(e.target, "Password cannot be empty")
+                  }
                   onInput={(e) => setPassword(e.target.value)}
                 />
               </Form.Group>

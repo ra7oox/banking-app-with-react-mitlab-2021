@@ -29,7 +29,7 @@ const AllData = () => {
       <TopMenu />
       <Card className="centered">
         <Card.Img variant="top" src={Logo} />
-        <Card.Body className="table-container">
+        <Card.Body className="table-container borderless">
           <h3>Accounts</h3>
           <Table striped bordered hover variant="dark">
             <thead>
@@ -42,9 +42,9 @@ const AllData = () => {
               </tr>
             </thead>
             <tbody>
-              {context.users.map((item) => {
+              {context.users.map((item, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>{item.name}</td>
                     <td>{item.email}</td>
                     <td>{item.password}</td>
@@ -66,9 +66,9 @@ const AllData = () => {
               </tr>
             </thead>
             <tbody>
-              {transactions.map((item) => {
+              {transactions.map((item, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>{item.account}</td>
                     <td>{item.operation}</td>
                     <td>{item.amount}</td>
