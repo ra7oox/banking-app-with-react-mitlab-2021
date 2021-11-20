@@ -34,6 +34,17 @@ This will get all the needed dependencies in your folder
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+# Technology
+
+React (from Create React App)
+
+# Features
+
+- Create test accounts
+- Login using any of the created accounts
+- Withdraw and deposit once logged in as an account, storing an individual balance per account
+- View all accounts with corresponding balance
+
 # Future improvements
 
 - Enable you to play with the computer apart from with someone else

@@ -29,6 +29,7 @@ const Withdraw = () => {
   const submit = () => {
     if (context.loggedInUser.balance - +amount < 0) {
       setError("You cannot withdraw an amount greater than your balance");
+      setSubmitted(false);
       return false;
     }
     context.loggedInUser.balance -= +amount;
