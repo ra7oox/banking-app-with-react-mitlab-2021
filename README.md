@@ -17,7 +17,7 @@ It was created as part of a proposed assignment during the Full Stack Developmen
 
 It uses Bootstrap as a starting point for styling.
 
-Live Preview: https://renzodupont.github.io/mit-career-2021/week-16/
+Live Preview: http://renzo-dupontbankingapplication.s3-website.us-east-2.amazonaws.com/
 
 # How to Run
 
