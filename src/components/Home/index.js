@@ -1,41 +1,27 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Alert, Button, Card, Form } from "react-bootstrap";
 import Logo from "../../img/logo.png";
 
 import TopMenu from "../TopMenu/index";
 import Footer from "../Footer/index";
-import { UserContext } from "../../App";
+import { login } from "../../actions/userActions";
 
 const Home = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-  const context = useContext(UserContext);
+  const dispatch = useDispatch();
+
+  const { loggedInUser, error } = useSelector((state) => state.user);
 
   const validForm = () => {
     return email.trim() !== "" && password.trim() !== "";
   };
 
-  const validateInput = (input, errorMessage) => {
-    if (input.value === "") {
-      input.classList.add("error");
-      input.placeholder = errorMessage;
-    } else {
-      input.classList.remove("error");
-    }
-  };
-
-  const submit = () => {
-    const foundUsers = context.users.filter((item) => item.email === email);
-    if (foundUsers.length === 0 || foundUsers[0].password !== password) {
-      setError("Incorrect email or password");
-      return false;
-    }
-    context.loggedInUser = foundUsers[0];
+  const handleLogin = () => {
+    dispatch(login(email, password));
     setEmail("");
     setPassword("");
-    setSubmitted(true);
   };
 
   return (
@@ -45,14 +31,12 @@ const Home = () => {
         <Card.Img variant="top" src={Logo} />
         <Card.Body>
           <Card.Title className="centered">
-            Welcome{" "}
-            {context.loggedInUser !== null ? context.loggedInUser.name : ""} to
-            the Awesome Bank
+            Welcome {loggedInUser ? loggedInUser.name : ""} to the Awesome Bank
           </Card.Title>
           <Card.Text className="centered">
             Thank you for choosing our system
           </Card.Text>
-          {context.loggedInUser === null && (
+          {!loggedInUser && (
             <Form>
               <Form.Group className="mb-3">
                 <Form.Label>Email</Form.Label>
@@ -61,10 +45,7 @@ const Home = () => {
                   type="email"
                   placeholder="Email"
                   value={email}
-                  onBlur={(e) =>
-                    validateInput(e.target, "Email cannot be empty")
-                  }
-                  onInput={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Form.Group>
 
@@ -75,24 +56,19 @@ const Home = () => {
                   type="password"
                   placeholder="Password"
                   value={password}
-                  onBlur={(e) =>
-                    validateInput(e.target, "Password cannot be empty")
-                  }
-                  onInput={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Form.Group>
 
-              {error !== "" && <Alert variant="danger">{error}</Alert>}
-              {!submitted && (
-                <Button
-                  variant="dark"
-                  type="button"
-                  disabled={!validForm()}
-                  onClick={submit}
-                >
-                  Login
-                </Button>
-              )}
+              {error && <Alert variant="danger">{error}</Alert>}
+              <Button
+                variant="dark"
+                type="button"
+                disabled={!validForm()}
+                onClick={handleLogin}
+              >
+                Login
+              </Button>
             </Form>
           )}
         </Card.Body>

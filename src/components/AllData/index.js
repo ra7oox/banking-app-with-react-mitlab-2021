@@ -1,28 +1,27 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Table, Card } from "react-bootstrap";
 import Logo from "../../img/logo.png";
 
 import TopMenu from "../TopMenu/index";
 import Footer from "../Footer/index";
-import { UserContext } from "../../App";
 
 const AllData = () => {
-  const context = useContext(UserContext);
-  // Add all users transactions in a single array ordered by date
-  const transactions = [];
-  for (let user of context.users) {
-    for (let transaction of user.transactions) {
-      transactions.push({
-        account: user.name,
-        operation: transaction.operation,
-        amount: transaction.amount,
-        createdDate: transaction.createdDate,
-      });
-    }
-  }
-  transactions.sort(
-    (a, b) => new Date(b.createdDate) - new Date(a.createdDate)
+  // Accéder à l'état global via Redux
+  const { users } = useSelector((state) => state.user);
+
+  // Vérifier que les utilisateurs ont des transactions
+  const transactions = users.flatMap((user) =>
+    user.transactions.map((transaction) => ({
+      account: user.name,
+      operation: transaction.operation,
+      amount: transaction.amount,
+      createdDate: new Date(transaction.createdDate),
+    }))
   );
+
+  // Trier les transactions par date (du plus récent au plus ancien)
+  transactions.sort((a, b) => b.createdDate - a.createdDate);
 
   return (
     <>
@@ -42,17 +41,15 @@ const AllData = () => {
               </tr>
             </thead>
             <tbody>
-              {context.users.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{item.name}</td>
-                    <td>{item.email}</td>
-                    <td>{item.password}</td>
-                    <td>{item.balance}</td>
-                    <td>{item.createdDate.toLocaleString()}</td>
-                  </tr>
-                );
-              })}
+              {users.map((user, index) => (
+                <tr key={index}>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.password}</td>
+                  <td>{user.balance}</td>
+                  <td>{new Date(user.createdDate).toLocaleString()}</td>
+                </tr>
+              ))}
             </tbody>
           </Table>
           <h3>Transactions</h3>
@@ -66,16 +63,14 @@ const AllData = () => {
               </tr>
             </thead>
             <tbody>
-              {transactions.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{item.account}</td>
-                    <td>{item.operation}</td>
-                    <td>{item.amount}</td>
-                    <td>{item.createdDate.toLocaleString()}</td>
-                  </tr>
-                );
-              })}
+              {transactions.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.account}</td>
+                  <td>{item.operation}</td>
+                  <td>{item.amount}</td>
+                  <td>{item.createdDate.toLocaleString()}</td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </Card.Body>

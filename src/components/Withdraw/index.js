@@ -1,17 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+
 import { Alert, Card, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from "../../img/logo.png";
 
 import TopMenu from "../TopMenu/index";
 import Footer from "../Footer/index";
-import { UserContext } from "../../App";
+import { withdrawAmount } from "../../actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Withdraw = () => {
   const [amount, setAmount] = useState(0);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-  const context = useContext(UserContext);
+  const dispatch = useDispatch();
+  const { loggedInUser, error } = useSelector((state) => state.user);
 
   const validForm = () => {
     return amount > 0;
@@ -27,26 +29,15 @@ const Withdraw = () => {
   };
 
   const submit = () => {
-    if (context.loggedInUser.balance - +amount < 0) {
-      setError("You cannot withdraw an amount greater than your balance");
-      setSubmitted(false);
-      return false;
-    }
-    context.loggedInUser.balance -= +amount;
-    context.loggedInUser.transactions.push({
-      operation: "Withdraw",
-      amount: amount,
-      createdDate: new Date(),
-    });
-    setError("");
-    setAmount(0);
+    dispatch(withdrawAmount(+amount));
     setSubmitted(true);
+    setAmount(0);
   };
 
   return (
     <>
       <TopMenu />
-      {context.loggedInUser === null && (
+      {loggedInUser === null && (
         <Card className="centered">
           <Card.Img variant="top" src={Logo} />
           <Card.Body>
@@ -62,7 +53,7 @@ const Withdraw = () => {
           </Card.Body>
         </Card>
       )}
-      {context.loggedInUser !== null && (
+      {loggedInUser !== null && (
         <>
           <Card>
             <Card.Img variant="top" src={Logo} />
@@ -72,7 +63,7 @@ const Withdraw = () => {
               </Card.Title>
 
               <Alert variant="warning">
-                <h3>Balance: ${context.loggedInUser.balance}</h3>
+                <h3>Balance: ${loggedInUser.balance}</h3>
               </Alert>
 
               <Alert variant="warning">
@@ -98,8 +89,8 @@ const Withdraw = () => {
                     )}
                   </Form.Group>
 
-                  {error !== "" && <Alert variant="danger">{error}</Alert>}
-                  {submitted && (
+                  {error && <Alert variant="danger">{error}</Alert>}
+                  {submitted && !error && (
                     <Alert variant="success">
                       You successfully withdraw from your account
                     </Alert>
