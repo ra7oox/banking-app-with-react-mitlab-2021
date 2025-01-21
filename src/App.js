@@ -27,13 +27,13 @@ const App = () => {
             <div className="copyright-spacing"></div>
           </Container>
           <div className="copyright">
-            Designed by{" "}
+           
             <a
               href="https://renzodupont.github.io/"
               target="_blank"
               rel="noreferrer"
             >
-              Renzo Dupont
+              
             </a>
           </div>
         </>

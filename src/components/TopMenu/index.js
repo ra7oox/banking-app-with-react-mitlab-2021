@@ -13,7 +13,7 @@ const TopMenu = () => {
       <Container>
         <Navbar.Brand>
           <NavLink to="/" exact>
-            Awesome Bank <br />
+             US bank <br />
             <i>
               {context.loggedInUser !== null
                 ? `Hey, ${context.loggedInUser.name}`
