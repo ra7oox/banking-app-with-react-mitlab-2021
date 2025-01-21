@@ -62,7 +62,7 @@ const TopMenu = () => {
               activeClassName="nav-link-active"
               to="/all-data"
             >
-              All Data
+              Dashboard
             </NavLink>
           </Nav>
         </Navbar.Collapse>
